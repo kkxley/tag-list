@@ -1,5 +1,5 @@
 <template>
-  <div class="tag-list">
+  <div :class="['tag-list', {'tag-list_justify': justify}]">
     <div class="tag-list__item" :key="tag.id" v-for="(tag, i) in tags">
       <v-icon v-if="i">
         mdi-circle-small
@@ -24,6 +24,10 @@ export default {
         return value.every((element) => element.label);
       }
     },
+    justify: {
+      type: Boolean,
+      default: false
+    }
   }
 }
 </script>
@@ -38,5 +42,8 @@ export default {
     align-items: center;
   }
 
+  &_justify {
+    justify-content: space-between;
+  }
 }
 </style>

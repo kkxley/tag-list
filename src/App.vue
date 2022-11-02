@@ -2,7 +2,12 @@
   <v-app>
     <v-main>
       <v-container>
-        <TagList :tags="tags" />
+        <div class="example-block">
+          <TagList :tags="tags" />
+        </div>
+        <div class="example-block">
+          <TagList :tags="tags" justify />
+        </div>
       </v-container>
     </v-main>
   </v-app>
@@ -51,3 +56,18 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss" scoped>
+.example-block {
+  padding: 10px;
+  border: 1px solid black;
+
+  & + & {
+    margin-top: 10px;
+  }
+
+  &_small {
+    max-width: 500px;
+  }
+}
+</style>
