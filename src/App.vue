@@ -1,12 +1,15 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
+      <v-container class="example-wrapper">
+        <div class="example-block">
+          <TagList :tags="tags" justify />
+        </div>
         <div class="example-block">
           <TagList :tags="tags" />
         </div>
-        <div class="example-block">
-          <TagList :tags="tags" justify />
+        <div class="example-block example-block_small">
+          <TagList :tags="tags" />
         </div>
       </v-container>
     </v-main>
@@ -58,16 +61,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.example-block {
-  padding: 10px;
-  border: 1px solid black;
-
-  & + & {
-    margin-top: 10px;
+.example {
+  &-wrapper {
+    resize: horizontal;
+    overflow: auto;
   }
 
-  &_small {
-    max-width: 500px;
+  &-block {
+    padding: 10px;
+    border: 1px solid black;
+
+    & + & {
+      margin-top: 10px;
+    }
+
+    &_small {
+      max-width: 400px;
+    }
   }
 }
 </style>

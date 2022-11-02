@@ -1,12 +1,13 @@
 <template>
-  <div :class="['tag-list', {'tag-list_justify': justify}]">
-    <div class="tag-list__item" :key="tag.id" v-for="(tag, i) in tags">
-      <v-icon v-if="i">
+  <div :class="['tag-list', {'tag-list_justify': justify}]" :style="cssVars">
+    <template v-for="tag in tags">
+      <v-icon :key="`divider-${tag.id}`" class="tag-list__divider">
         mdi-circle-small
       </v-icon>
-      <Tag :icon="tag.icon"
+      <Tag :key="`tag-${tag.id}`"
+           :icon="tag.icon"
            :label="tag.label" />
-    </div>
+    </template>
   </div>
 </template>
 
@@ -28,6 +29,28 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  data() {
+    return {
+      oneLineHeight: null
+    }
+  },
+  mounted() {
+    this.oneLineHeight = this.$el.clientHeight;
+  },
+  computed: {
+    cssVars() {
+      if (this.oneLineHeight !== null) {
+        return {
+          '--max-height': `${this.oneLineHeight}px`,
+          '--flex-wrap': 'wrap'
+        }
+      }
+      return {
+        '--max-height': 'initial',
+        '--flex-wrap': 'nowrap'
+      }
+    }
   }
 }
 </script>
@@ -36,10 +59,12 @@ export default {
 .tag-list {
   display: flex;
   align-items: center;
+  flex-wrap: var(--flex-wrap);
+  max-height: var(--max-height);
+  overflow: hidden;
 
-  &__item {
-    display: flex;
-    align-items: center;
+  &__divider:first-of-type {
+    display: none;
   }
 
   &_justify {
