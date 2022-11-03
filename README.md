@@ -1,6 +1,7 @@
 # technesis-test-task
 
-![image](https://user-images.githubusercontent.com/46642788/199753433-4bf8f97c-3e04-4e20-a044-05b8a7410f32.png)
+![image](https://user-images.githubusercontent.com/46642788/199783805-d1f7dc8b-59f6-44d9-9372-0d166d8b56a9.png)
+
 
 
 ## Project setup
