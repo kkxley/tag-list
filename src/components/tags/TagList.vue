@@ -1,7 +1,7 @@
 <template>
   <div :class="['tag-list', {'tag-list_justify': justify}]" :style="cssVars">
     <div :key="`item-${tag.id}`" v-for="tag in tags" class="tag-list__item">
-      <v-icon class="tag-list__divider">
+      <v-icon class="tag-list__divider" size="24">
         mdi-circle-small
       </v-icon>
       <Tag :icon="tag.icon"
@@ -55,6 +55,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$divider-size: 24px;
+
 .tag-list {
   display: flex;
   align-items: center;
@@ -71,8 +73,29 @@ export default {
   }
 
   &__item {
+    position: relative;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+  }
+
+  &_justify &__item {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding-left: $divider-size;
+
+    &:first-of-type {
+      justify-content: flex-start;
+      padding-left: initial;
+    }
+
+    &:last-of-type {
+      justify-content: flex-end;
+    }
+  }
+
+  &_justify &__divider {
+    position: absolute;
+    left: 0;
   }
 }
 </style>
