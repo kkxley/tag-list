@@ -1,13 +1,12 @@
 <template>
   <div :class="['tag-list', {'tag-list_justify': justify}]" :style="cssVars">
-    <template v-for="tag in tags">
-      <v-icon :key="`divider-${tag.id}`" class="tag-list__divider">
+    <div :key="`item-${tag.id}`" v-for="tag in tags" class="tag-list__item">
+      <v-icon class="tag-list__divider">
         mdi-circle-small
       </v-icon>
-      <Tag :key="`tag-${tag.id}`"
-           :icon="tag.icon"
+      <Tag :icon="tag.icon"
            :label="tag.label" />
-    </template>
+    </div>
   </div>
 </template>
 
@@ -63,12 +62,17 @@ export default {
   max-height: var(--max-height);
   overflow: hidden;
 
-  &__divider:first-of-type {
+  &__item:first-of-type &__divider {
     display: none;
   }
 
   &_justify {
     justify-content: space-between;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
   }
 }
 </style>
