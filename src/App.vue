@@ -1,14 +1,18 @@
 <template>
   <v-app>
     <v-main>
-      <v-container class="example-wrapper">
+      <v-container>
+        <h1>Demo</h1>
         <div class="example-block">
-          <TagList :tags="tags" justify />
+          <h2>The block by width, center alignment</h2>
+          <TagList :tags="tags" is-center-alignment />
         </div>
         <div class="example-block">
+          <h2>The block by width, left alignment</h2>
           <TagList :tags="tags" />
         </div>
         <div class="example-block example-block_small">
+          <h2>The little block, left alignment</h2>
           <TagList :tags="tags" />
         </div>
       </v-container>
@@ -26,25 +30,25 @@ const TAGS = [
   },
   {
     id: 2,
-    label: 'Обзорная',
+    label: 'Station name',
   },
   {
     id: 3,
-    label: 'На автобусе',
+    label: 'By bus',
     icon: 'bus'
   },
   {
     id: 4,
-    label: '25 марта',
+    label: 'March, 25',
   },
   {
     id: 5,
-    label: '6 часов',
+    label: '6 hours',
     icon: 'clock-outline'
   },
   {
     id: 6,
-    label: 'до 49',
+    label: 'Up to 49',
     icon: 'account'
   }
 ];
@@ -62,11 +66,6 @@ export default {
 
 <style lang="scss" scoped>
 .example {
-  &-wrapper {
-    resize: horizontal;
-    overflow: auto;
-  }
-
   &-block {
     padding: 10px;
     border: 1px solid black;

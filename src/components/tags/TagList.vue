@@ -1,5 +1,5 @@
 <template>
-  <div :class="['tag-list', {'tag-list_justify': justify}]" :style="cssVars">
+  <div :class="['tag-list', {'tag-list_justify-center': isCenterAlignment}]" :style="cssVars">
     <div :key="`item-${tag.id}`" v-for="tag in tags" class="tag-list__item">
       <v-icon class="tag-list__divider" size="24">
         mdi-circle-small
@@ -24,7 +24,7 @@ export default {
         return value.every((element) => element.label);
       }
     },
-    justify: {
+    isCenterAlignment: {
       type: Boolean,
       default: false
     }
@@ -68,8 +68,8 @@ $divider-size: 24px;
     display: none;
   }
 
-  &_justify {
-    justify-content: space-between;
+  &_justify-center {
+    justify-content: center;
   }
 
   &__item {
@@ -78,22 +78,13 @@ $divider-size: 24px;
     align-items: center;
   }
 
-  &_justify &__item {
+  &_justify-center &__item {
     flex: 1 1 auto;
     justify-content: center;
     padding-left: $divider-size;
-
-    &:first-of-type {
-      justify-content: flex-start;
-      padding-left: initial;
-    }
-
-    &:last-of-type {
-      justify-content: flex-end;
-    }
   }
 
-  &_justify &__divider {
+  &_justify-center &__divider {
     position: absolute;
     left: 0;
   }
